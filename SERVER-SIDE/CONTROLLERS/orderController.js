@@ -14,6 +14,7 @@ exports.placeOrder = (req, res) => {
       return res.status(500).json({ error: 'Could not save order.' });
     }
     
+    
     // Respond with the saved order
     res.json({ order: savedOrder });
   });
