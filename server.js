@@ -12,7 +12,7 @@ app.listen(3000, () => {
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/my_database', {
+mongoose.connect('mongodb+srv://Jewelchidinma:Mmalistic41023@chatbotcluster.rbiawhd.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

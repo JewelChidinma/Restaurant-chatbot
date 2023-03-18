@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 // Import the API routes
-const apiRoutes = require('./server/apiRoutes');
+const apiRoutes = require('./Routes/apiRoutes');
 
 // Set up the Express app
 const app = express();
@@ -14,7 +14,7 @@ app.use(express.static(__dirname + '/client'));
 app.use(bodyParser.json());
 
 // Set up the MongoDB connection
-mongoose.connect('mongodb://localhost/chatbot', { useNewUrlParser: true });
+mongoose.connect('mongodb+srv://Jewelchidinma:Mmalistic41023@chatbotcluster.rbiawhd.mongodb.net/?retryWrites=true&w=majority', { useNewUrlParser: true });
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 db.once('open', () => {
