@@ -1,25 +1,23 @@
+// import express from 'express'import path from 'path';
 const express = require('express');
+const http = require('http');
+const socket = require('socket.io');
+const Socket = require('./app/socket/socket');
+const path = require('path');
+
+//set app env
 const app = express();
+const server = http.createServer(app);
 
-app.get('/', (req, res) => {
-  res.send('Hello, world!');
-});
+// Set up socket
+const { SocketInstance } = Socket.createSocket(server);
+SocketInstance(server);
 
-app.listen(3000, () => {
-  console.log('Server listening on port 3000');
-});
+//set static files
+app.use(express.static(path.join(__dirname, 'public')));
 
-
-const mongoose = require('mongoose');
-
-mongoose.connect('mongodb+srv://Jewelchidinma:Mmalistic41023@chatbotcluster.rbiawhd.mongodb.net/?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-});
-
-const db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function() {
-  console.log('Connected to MongoDB');
-});
+//listen and port
+const PORT = 4000 || process.env.port;
+server.listen(PORT, () =>
+	console.log('Server is runing on port ' + PORT),
+);
