@@ -1,4 +1,4 @@
-const socket = io();
+const socket = io('ws://localhost:4000');
 const chatForm = document.getElementById('chat-container');
 // const userInput = document.getElementsByClassName('input-box');
 const userInput = document.getElementById('textInput');
