@@ -1,12 +1,11 @@
 // import express from 'express'import path from 'path';
 const express = require('express');
 const http = require('http');
-const socket = require('socket.io');
-const Socket = require('./app/socket/socket');
+const Socket = require('socket.io');
 const path = require('path');
 
 //set app env
-const app = express();
+const app = express();cd
 const server = http.createServer(app);
 
 // Set up socket
