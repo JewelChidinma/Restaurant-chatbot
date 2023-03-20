@@ -5,7 +5,7 @@ const Socket = require('socket.io');
 const path = require('path');
 
 //set app env
-const app = express();cd
+const app = express();
 const server = http.createServer(app);
 
 // Set up socket
