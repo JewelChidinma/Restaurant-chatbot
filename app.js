@@ -14,7 +14,11 @@ const { SocketInstance } = Socket.createSocket(server);
 SocketInstance(server);
 
 //set static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname + "/public/"));
+
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/index.html");
+});
 
 //listen and port
 const PORT = 4000 || process.env.port;
