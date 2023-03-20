@@ -2,7 +2,7 @@
 const express = require('express');
 const http = require('http');
 const socket = require('socket.io');
-const Socket = require('App\socket\socket');
+const Socket = require('./App/socket/socket');
 const path = require('path');
 
 //set app env
