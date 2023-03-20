@@ -1,4 +1,5 @@
-const socket = io('ws://localhost:4000');
+//const socket = io('ws://localhost:4000');
+const socket = io('wss://dinmas-restaurant-chatbot.onrender.com');
 const chatForm = document.getElementById('chat-container');
 // const userInput = document.getElementsByClassName('input-box');
 const userInput = document.getElementById('textInput');
