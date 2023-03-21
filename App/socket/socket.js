@@ -31,17 +31,29 @@ class Socket {
 
 	_checkUserMessage(socket, message) {
 		if (message === '1') {
-			this._emitBotMessage(socket, 'You have selected Meat Pie');
-			this._userChat({ menu: 'Meat Pie' });
+			this._emitBotMessage(socket, 'You have selected Jollof Rice');
+			this._userChat({ menu: 'Jollof Rice' });
 		} else if (message === '2') {
-			this._emitBotMessage(socket, 'You have selected Chicken Pie ');
-			this._userChat({ menu: 'Chicken Pie' });
+			this._emitBotMessage(socket, 'You have selected Fried Rice ');
+			this._userChat({ menu: 'Fried Rice' });
 		} else if (message === '3') {
-			this._emitBotMessage(socket, 'You have selected Beef Pie');
-			this._userChat({ menu: 'Beef Pie' });
+			this._emitBotMessage(socket, 'You have selected Amala and Ewedu');
+			this._userChat({ menu: 'Amala and Ewedu' });
 		} else if (message === '4') {
-			this._emitBotMessage(socket, 'You have selected Fish Pie');
-			this._userChat({ menu: 'Fish Pie' });
+			this._emitBotMessage(socket, 'You have selected Abacha and Ugba');
+			this._userChat({ menu: 'Abacha and Ugba' });
+		} else if (message === '5') {
+			this._emitBotMessage(socket, 'You have selected Eba and Egusi');
+			this._userChat({ menu: 'Eba and Egusi' });
+		} else if (message === '6') {
+			this._emitBotMessage(socket, 'You have selected Spaghetti and Meat Sauce');
+			this._userChat({ menu: 'Spaghetti and Meat Sauce' });
+		} else if (message === '7') {
+			this._emitBotMessage(socket, 'You have selected Fried Yam and Egg Sauce');
+			this._userChat({ menu: 'Fried Yam and Egg Sauce' });
+		} else if (message === '8') {
+			this._emitBotMessage(socket, 'You have selected Beans and Dodo');
+			this._userChat({ menu: 'Beans and Dodo' });
 		} else if (message === '90') {
 			this._clearCart();
 		} else if (message === '99') {
