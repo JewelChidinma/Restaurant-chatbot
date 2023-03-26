@@ -1,12 +1,16 @@
 const socket = require('socket.io');
 const express = require('express');
-const { formatMessage, menuOptions } = require('./Helper');
+const { formatMessage, menuOptions, initialOptions } = require('./Helper');
 
 class Socket {
 	constructor(server) {
 		this.io = socket(server, { cors: { origin: '*' } });
 		this.botName = 'Dinma Bot';
 		this.userName = 'User';
+	}
+
+	_emitInitialOptions(socket, message){
+		socket.emit('initBotMessage', formatMessage(this.botName, message));
 	}
 
 	_emitUserMessage(socket, message) {
@@ -27,6 +31,16 @@ class Socket {
 
 	_viewOrderHistory() {
 		this.io.emit('viewOrderHistory');
+	}
+
+	_checkInitUserMessage(socket, message) {
+		if (message === '1') {
+			this._emitBotMessage(
+				socket, 'Here is the list of menu options you can choose from');
+				menuOptions.forEach((el) => {
+					this._emitInitialOptions(socket, el);
+				});
+		}
 	}
 
 	_checkUserMessage(socket, message) {
@@ -67,15 +81,15 @@ class Socket {
 		this.io.on('connection', (socket) => {
 			console.log('New user connected' + socket.id);
 
-			// this._emitBotMessage(socket, 'Hello, I am Dinma Bot');
+			this._emitBotMessage(socket, 'Hello, I am Dinma Bot');
 
 			this._emitBotMessage(
 				socket,
-				'Here is the list of menu options you can choose from',
+				'Here is the list of options you can choose from',
 			);
 
 			///display menu options
-			menuOptions.forEach((el) => {
+			initialOptions.forEach((el) => {
 				this._emitBotMessage(socket, el);
 			});
 
@@ -84,6 +98,10 @@ class Socket {
 
 				this._emitUserMessage(socket, message);
 			});
+
+			socket.on('initUserMessage', (message) => {
+				this._checkInitUserMessage(socket, message)
+			})
 		});
 	}
 

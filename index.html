@@ -179,6 +179,7 @@
 			const chatForm = document.getElementById('chat-container');
 			// const userInput = document.getElementsByClassName('input-box');
 			const userInput = document.getElementById('textInput');
+			let initialScreen = true;
 			
 			const sessionStorage = () => {
 				const storageKey = 'userSession';
@@ -275,8 +276,16 @@
 			userInput.addEventListener('keypress', (e) => {
 				if (e.keyCode === 13) {
 					e.preventDefault();
+
 			
-					socket.emit('userMessage', userInput.value);
+					if(initialScreen){
+						socket.emit('initUserMessage', userInput.value)
+						initialScreen = false
+					}
+					else{
+						socket.emit('userMessage', userInput.value)
+					}
+				
 					userInput.value = '';
 				}
 			});
@@ -284,6 +293,10 @@
 			socket.on('userMessage', (msg) => {
 				outputMessage(msg);
 			});
+
+			socket.on('initBotMessage', (msg) => {
+				outputMessage(msg);
+			})
 			
 			socket.on('botMessage', (msg) => {
 				console.log(msg);
